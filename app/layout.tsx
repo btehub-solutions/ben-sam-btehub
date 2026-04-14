@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -25,6 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bensam.vercel.app"),
   title: "Ben Sam Oladoyin | AI & ML Engineer",
   description: "AI & ML Engineer specializing in LLMs, AI Agents, Computer Vision, and Conversational AI. Available for full-time roles globally.",
   keywords: ["AI Engineer", "ML Engineer", "LLM", "AI Agents", "Computer Vision", "Nigeria", "Ben Sam Oladoyin", "BTEHub"],

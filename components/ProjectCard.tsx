@@ -33,6 +33,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="relative h-48 overflow-hidden bg-dark-bg/50">
         {project.image ? (
           <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={project.image}
               alt={project.title}

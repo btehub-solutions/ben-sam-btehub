@@ -109,6 +109,7 @@ export default function CertificationsSection() {
               className="relative max-w-[95vw] max-h-[85vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={selectedImage}
                 alt="Certificate"

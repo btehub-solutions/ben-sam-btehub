@@ -27,7 +27,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border overflow-hidden hover:border-accent-violet/40 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-accent-violet/10 hover:-translate-y-2 glow-card"
+      className="group relative rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border overflow-hidden hover:border-accent-violet/40 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-accent-violet/10 hover:-translate-y-2 glow-card transform-gpu backface-hidden"
     >
       {/* Project Image / Gradient Header */}
       <div className="relative h-48 overflow-hidden bg-dark-bg/50">

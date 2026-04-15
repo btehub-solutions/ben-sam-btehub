@@ -69,7 +69,7 @@ export default function HeroSection() {
   const isDark = !mounted || theme === "dark" || resolvedTheme === "dark";
 
   return (
-    <section ref={heroRef} id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <section ref={heroRef} id="hero" className="relative min-h-screen w-full flex items-start md:items-center justify-center overflow-hidden pt-12 md:pt-0">
       {/* Background */}
       <div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -87,7 +87,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center pt-24 pb-12 w-full">
           
           {/* Left Column */}
-          <div className="flex flex-col items-start text-left shrink-0 w-full">
+          <div className="flex flex-col items-start text-left shrink-0 w-full transform-gpu">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ export default function HeroSection() {
             </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 mb-10 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-10 w-full sm:w-auto transform-gpu">
               <motion.a
                 href="#projects"
                 initial={{ opacity: 0, scale: 0.9 }}

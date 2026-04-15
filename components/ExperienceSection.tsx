@@ -39,7 +39,13 @@ export default function ExperienceSection() {
               </div>
 
               {/* Card */}
-              <div className="p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-accent-violet/30 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-accent-violet/5 hover:-translate-y-1 glow-card">
+              <div 
+                className="p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:shadow-xl hover:shadow-accent-violet/5 hover:border-accent-violet/30 glow-card transform-gpu backface-hidden"
+                style={{
+                  transition: "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+                  willChange: "transform, opacity"
+                }}
+              >
                 {/* Header */}
                 <div className={`mb-4 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                   <h3 className="text-xl font-display font-bold text-text-primary-light dark:text-text-primary-dark">

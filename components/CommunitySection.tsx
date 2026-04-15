@@ -52,9 +52,13 @@ export default function CommunitySection() {
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-10px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group flex gap-4 p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-accent-violet/30 transition-all duration-300 glow-card"
+              whileHover={{ y: -2 }}
+              className="group flex gap-4 p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border glow-card transform-gpu backface-hidden shadow-sm hover:shadow-md hover:border-accent-violet/30"
+              style={{
+                transition: "border-color 0.3s ease, box-shadow 0.3s ease"
+              }}
             >
               {/* Icon */}
               <div className="shrink-0 w-12 h-12 rounded-xl bg-accent-violet/10 border border-accent-violet/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">

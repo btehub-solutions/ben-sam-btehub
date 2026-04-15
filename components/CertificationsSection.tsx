@@ -23,14 +23,20 @@ export default function CertificationsSection() {
             key={cert.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="group relative flex flex-col rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-accent-violet/30 transition-all duration-300 glow-card overflow-hidden h-full"
+            viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ y: -5 }}
+            className="group relative flex flex-col rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border overflow-hidden h-full shadow-sm hover:shadow-xl hover:border-accent-violet/30 glow-card transform-gpu backface-hidden"
+            style={{
+              transitionProperty: "border-color, box-shadow",
+              transitionDuration: "300ms",
+              transitionTimingFunction: "ease-out"
+            }}
           >
             {/* Image Preview - Since these are high-res Udemy certs, object-cover looks great */}
             <button 
               onClick={() => setSelectedImage(cert.image || null)}
-              className="relative aspect-[4/3] w-full overflow-hidden border-b border-light-border dark:border-dark-border bg-[#1a1a1a] cursor-zoom-in"
+              className="relative aspect-[4/3] w-full overflow-hidden border-b border-light-border dark:border-dark-border bg-[#1a1a1a] cursor-zoom-in transform-gpu"
             >
               {cert.image ? (
                 <Image
@@ -39,7 +45,8 @@ export default function CertificationsSection() {
                   fill
                   unoptimized
                   quality={100}
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 transform-gpu"
+                  loading="lazy"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">

@@ -129,14 +129,18 @@ export default function AboutSection() {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
         {highlights.map((item, index) => (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-center hover:border-accent-violet/30 transition-all duration-300 glow-card"
-          >
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group relative p-6 rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-center hover:border-accent-violet/30 glow-card transform-gpu backface-hidden shadow-sm hover:shadow-xl"
+              style={{
+                transition: "border-color 0.3s ease, box-shadow 0.3s ease"
+              }}
+            >
             <item.icon className="w-6 h-6 text-accent-violet mx-auto mb-3 group-hover:scale-110 transition-transform" />
             <div className="text-3xl font-display font-bold text-text-primary-light dark:text-text-primary-dark mb-1">
               {item.value}

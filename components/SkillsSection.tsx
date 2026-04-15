@@ -66,10 +66,13 @@ export default function SkillsSection() {
                 key={skill.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.02 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="px-3 py-1.5 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-xs font-mono text-text-muted-light dark:text-text-muted-dark hover:text-accent-violet hover:border-accent-violet/30 transition-colors cursor-default"
+                viewport={{ once: true, margin: "-20px" }}
+                transition={{ duration: 0.3, delay: i * 0.01 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="px-3 py-1.5 rounded-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border text-xs font-mono text-text-muted-light dark:text-text-muted-dark cursor-default transform-gpu backface-hidden"
+                style={{
+                  transition: "color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease"
+                }}
               >
                 {skill.name}
               </motion.span>

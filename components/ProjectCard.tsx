@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FiExternalLink, FiArrowUpRight } from "react-icons/fi";
 import { RiGithubFill } from "react-icons/ri";
 import { Project } from "@/data/projects";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -25,19 +26,34 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border overflow-hidden hover:border-accent-violet/40 transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-accent-violet/10 hover:-translate-y-2 glow-card transform-gpu backface-hidden"
+      viewport={{ once: true, margin: "-5% 0px -5% 0px" }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: [0.25, 1, 0.5, 1] 
+      }}
+      whileHover={{ 
+        y: -10,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
+      className="group relative rounded-2xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-accent-violet/10 glow-card transform-gpu backface-hidden"
+      style={{
+        transitionProperty: "border-color, box-shadow",
+        transitionDuration: "300ms",
+        transitionTimingFunction: "ease-out"
+      }}
     >
       {/* Project Image / Gradient Header */}
-      <div className="relative h-48 overflow-hidden bg-dark-bg/50">
+      <div className="relative h-48 overflow-hidden bg-dark-bg/50 transform-gpu">
         {project.image ? (
           <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out transform-gpu"
+              loading="lazy"
             />
             {/* Overlay Gradient for contrast */}
             <div className="absolute inset-0 bg-gradient-to-t from-dark-card/90 via-dark-card/20 to-transparent" />
@@ -57,7 +73,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         )}
 
         {/* Category Badge - Always visible on top of image/gradient */}
-        <div className="absolute bottom-4 left-4">
+        <div className="absolute bottom-4 left-4 z-10">
           <span
             className={`text-[10px] uppercase tracking-wider font-mono px-2.5 py-1 rounded-md border backdrop-blur-md ${domainStyle} ${
               project.image
@@ -71,7 +87,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Featured badge */}
         {project.featured && (
-          <div className="absolute top-4 right-4 px-2.5 py-1 rounded-lg bg-accent-cyan/20 border border-accent-cyan/30 text-accent-cyan text-[10px] font-mono backdrop-blur-md">
+          <div className="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-lg bg-accent-cyan/20 border border-accent-cyan/30 text-accent-cyan text-[10px] font-mono backdrop-blur-md">
             Featured
           </div>
         )}
@@ -79,7 +95,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-display font-bold text-text-primary-light dark:text-text-primary-dark mb-2 group-hover:text-accent-violet transition-colors">
+        <h3 className="text-xl font-display font-bold text-text-primary-light dark:text-text-primary-dark mb-2 group-hover:text-accent-violet transition-colors duration-300">
           {project.title}
         </h3>
         <p className="text-sm text-text-muted-light dark:text-text-muted-dark font-body leading-relaxed mb-4 line-clamp-3">
@@ -105,7 +121,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm font-body text-text-muted-light dark:text-text-muted-dark hover:text-accent-violet transition-colors"
+              className="flex items-center gap-1.5 text-sm font-body text-text-muted-light dark:text-text-muted-dark hover:text-accent-violet transition-colors duration-300"
             >
               <RiGithubFill className="w-5 h-5" />
               Source Code
@@ -116,14 +132,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm font-body text-text-muted-light dark:text-text-muted-dark hover:text-accent-cyan transition-colors"
+              className="flex items-center gap-1.5 text-sm font-body text-text-muted-light dark:text-text-muted-dark hover:text-accent-cyan transition-colors duration-300"
             >
               <FiExternalLink className="w-4 h-4" />
               Live Demo
             </a>
           )}
           <div className="ml-auto">
-            <FiArrowUpRight className="w-5 h-5 text-text-muted-light dark:text-text-muted-dark group-hover:text-accent-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            <FiArrowUpRight className="w-5 h-5 text-text-muted-light dark:text-text-muted-dark group-hover:text-accent-violet group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
           </div>
         </div>
       </div>

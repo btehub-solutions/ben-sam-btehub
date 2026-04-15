@@ -65,12 +65,12 @@ export const projects: Project[] = [
     id: "vetlink-connect",
     title: "VetLink Connect",
     description:
-      "A professional agribusiness platform for Divine Agvet, specializing in authentic animal medicines and zero-compromise homegrown solutions for Nigerian farms.",
+      "A premium agribusiness platform for Divine Agvet featuring 'Authentic Medicines. Zero Compromise.' homegrown solutions for Nigerian livestock farms.",
     longDescription:
-      "A professional agribusiness platform for Divine Agvet, specializing in authentic animal medicines and zero-compromise homegrown solutions for Nigerian farms.",
+      "A high-impact agribusiness portal for Divine Agvet, focused on delivering authentic animal medicines direct from factory to farm. The platform modernizes livestock solutions with a trust-first approach for vets and farmers nationwide.",
     techStack: ["React", "Node.js", "FastAPI", "Python", "PostgreSQL"],
     category: "AI Application",
-    image: "/images/projects/vetlink.png",
+    image: "/images/projects/vetlink_hero.png",
     github: "https://github.com/btehub-solutions/vetlink-connect",
     live: "https://www.divineagvet.com/",
     featured: false,
@@ -95,12 +95,12 @@ export const projects: Project[] = [
     id: "ojaybee-farms",
     title: "O-Jay-Bee Farms Elevate",
     description:
-      "A digital transformation platform for O-Jay-Bee Farms, modernizing poultry, fish farming, and cassava processing operations in Ogun State, Nigeria.",
+      "A digital transformation showcase for O-Jay-Bee Farms, highlighting 'Trusted Agricultural Production & Processing' across Ogun State and Lagos.",
     longDescription:
-      "A digital transformation platform for O-Jay-Bee Farms, modernizing poultry, fish farming, and cassava processing operations in Ogun State, Nigeria.",
+      "A comprehensive digital platform for O-Jay-Bee Farms, streamlining the production and supply of premium catfish, broilers, garri, and yam flakes. Modernizing traditional agriculture with efficient digital workflows.",
     techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Vercel"],
     category: "Web Application",
-    image: "/images/projects/ojaybee.png",
+    image: "/images/projects/ojaybee_hero.png",
     github: "https://github.com/btehub-solutions/o-jay-bee-farms-elevate",
     live: "https://ojaybeefarms.vercel.app/",
     featured: false,

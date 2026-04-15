@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionWrapper, { SectionHeading } from "./SectionWrapper";
 import { certifications } from "@/data/certifications";
 import { FiAward, FiExternalLink, FiX } from "react-icons/fi";
@@ -9,8 +9,21 @@ import Image from "next/image";
 
 export default function CertificationsSection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedImage]);
 
   return (
+    <>
     <SectionWrapper id="certifications">
       <SectionHeading
         title="Certifications"
@@ -98,40 +111,46 @@ export default function CertificationsSection() {
         ))}
       </div>
 
-      {/* Premium Lightbox Modal */}
-      <AnimatePresence>
-        {selectedImage && (
+    </SectionWrapper>
+    
+    {/* Premium Lightbox Modal - Portfolio-wide overlay */}
+    <AnimatePresence>
+      {selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 backdrop-blur-xl bg-black/90"
+          onClick={() => setSelectedImage(null)}
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 backdrop-blur-xl bg-black/90"
-            onClick={() => setSelectedImage(null)}
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            className="relative w-full max-w-5xl aspect-[4/3] md:aspect-auto md:h-[85vh] flex items-center justify-center p-2"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="relative max-w-[95vw] max-h-[85vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="relative w-full h-full">
+              <Image
                 src={selectedImage}
                 alt="Certificate"
-                className="max-w-full max-h-[85vh] rounded-xl shadow-2xl border border-white/20 object-contain ring-1 ring-white/10"
+                fill
+                unoptimized
+                className="object-contain rounded-xl shadow-2xl border border-white/20 ring-1 ring-white/10"
+                priority
               />
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute -top-14 right-0 md:-right-14 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all border border-white/10 backdrop-blur-md"
-              >
-                <FiX className="w-8 h-8" />
-              </button>
-            </motion.div>
+            </div>
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 md:-top-16 right-0 md:-right-16 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all border border-white/10 backdrop-blur-md z-[110]"
+            >
+              <FiX className="w-6 h-6 md:w-8 h-8" />
+            </button>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </SectionWrapper>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 }
